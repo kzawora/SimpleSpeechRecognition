@@ -47,5 +47,4 @@ for i in range(gv.batch_iterations):
 
 print("Total files predicted:", gv.inference_batch_size * gv.batch_iterations)
 print("Total files predicted correctly:", total_accuracy)
-print("Total accuracy: %.2f%%" % ((total_accuracy / (gv.inference_batch_size*gv.batch_iterations)) * 100))
-
+print("Total accuracy: %.2f%%" % ((total_accuracy / (gv.inference_batch_size * gv.batch_iterations)) * 100))

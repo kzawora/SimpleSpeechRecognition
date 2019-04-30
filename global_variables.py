@@ -6,7 +6,7 @@ classes = 10  # digits
 tensorboard_verbosity = 3
 
 # training
-training_iters = 100  # steps
+training_iters = 200  # steps
 training_batch_size = 256
 validation_batch_size = 1024
 epochs = 20

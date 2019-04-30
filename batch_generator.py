@@ -5,6 +5,7 @@ import librosa
 import global_variables as gv
 from random import shuffle
 
+
 def mfcc_batch_generator(batch_size=10, height=gv.height, path=gv.pcm_path, exclude=[]):
     batch_features = []
     labels = []
