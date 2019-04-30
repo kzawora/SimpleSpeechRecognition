@@ -24,7 +24,7 @@ for times in range(gv.training_iters):
     model.fit(trainX, trainY, n_epoch=gv.epochs, validation_set=(testX, testY),
               validation_batch_size=gv.validation_batch_size,
               show_metric=True,
-              batch_size=gv.training_batch_size)
+              batch_size=gv.training_batch_size, run_id='lstm')
     if times % 10 == 0:
         model.save("tflearn.lstm.model.checkpoint")
 
