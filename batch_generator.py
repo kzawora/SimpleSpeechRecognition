@@ -5,17 +5,15 @@ import librosa
 import global_variables as gv
 from random import shuffle
 
-
-def mfcc_batch_generator(batch_size=10, height=gv.height, path=gv.pcm_path):
+def mfcc_batch_generator(batch_size=10, height=gv.height, path=gv.pcm_path, exclude=[]):
     batch_features = []
     labels = []
     names = []
     files = os.listdir(path)
     while True:
-        print("loaded batch of %d files" % len(files))
         shuffle(files)
         for wav in files:
-            if not wav.endswith(".wav"):
+            if not wav.endswith(".wav") or wav in exclude:
                 continue
             wave, sr = librosa.load(path + wav, mono=True, sr=None)
             label = dense_to_one_hot(int(wav[0]), 10)
@@ -25,6 +23,7 @@ def mfcc_batch_generator(batch_size=10, height=gv.height, path=gv.pcm_path):
             mfcc = np.pad(mfcc, ((0, 0), (0, height - len(mfcc[0]))), mode='constant', constant_values=0)
             batch_features.append(np.array(mfcc))
             if len(batch_features) >= batch_size:
+                print("loaded batch of %d files" % len(batch_features))
                 yield batch_features, labels, names  # basic_rnn_seq2seq inputs must be a sequence
                 batch_features = []  # Reset for next batch
                 labels = []
