@@ -27,6 +27,6 @@ for times in range(gv.training_iters):
                   show_metric=True,
                   batch_size=gv.training_batch_size, run_id='rnn')
     if times % 10 == 0:
-        model_rnn.save("tflearn.rnn.model.checkpoint")
+        model_rnn.save(gv.models_path + 'tflearn.rnn.model.checkpoint')
 
-model_rnn.save(gv.working_directory + 'tflearn.rnn.model')
+model_rnn.save(gv.models_path + 'tflearn.rnn.model')

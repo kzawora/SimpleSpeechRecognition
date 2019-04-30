@@ -26,6 +26,6 @@ for times in range(gv.training_iters):
               show_metric=True,
               batch_size=gv.training_batch_size, run_id='lstm')
     if times % 10 == 0:
-        model.save("tflearn.lstm.model.checkpoint")
+        model.save(gv.models_path + 'tflearn.lstm.model.checkpoint')
 
-model.save(gv.working_directory + 'tflearn.lstm.model')
+model.save(gv.models_path + 'tflearn.lstm.model')

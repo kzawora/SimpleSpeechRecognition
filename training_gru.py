@@ -27,6 +27,6 @@ for times in range(gv.training_iters):
                   show_metric=True,
                   batch_size=gv.training_batch_size, run_id='gru')
     if times % 10 == 0:
-        model_gru.save("tflearn.gru.model.checkpoint")
+        model_gru.save(gv.models_path + "tflearn.gru.model.checkpoint")
 
-model_gru.save(gv.working_directory + 'tflearn.gru.model')
+model_gru.save(gv.models_path + 'tflearn.gru.model')

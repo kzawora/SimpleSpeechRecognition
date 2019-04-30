@@ -1,21 +1,35 @@
 from __future__ import division, print_function, absolute_import
+import sys
 import tflearn
 import batch_generator
-import tensorflow as tf
 import numpy as np
 import global_variables as gv
+
+if len(sys.argv) < 2 or sys.argv[1] == 'lstm':
+    mode = 'lstm'
+elif sys.argv[1] == 'gru':
+    mode = 'gru'
+elif sys.argv[1] == 'rnn':
+    mode = 'rnn'
+else:
+    raise ValueError("Incorrect argument provided.")
 
 batch = batch_generator.mfcc_batch_generator(gv.inference_batch_size, gv.height)
 
 # Network building
 net = tflearn.input_data([None, gv.width, gv.height])
-net = tflearn.lstm(net, 128, dropout=0.8)
+if mode == 'gru':
+    net = tflearn.gru(net, 128, dropout=0.8)
+elif mode == 'rnn':
+    net = tflearn.simple_rnn(net, 128, dropout=0.8)
+else:
+    net = tflearn.lstm(net, 128, dropout=0.8)
 net = tflearn.fully_connected(net, gv.classes, activation='softmax')
 net = tflearn.regression(net, optimizer='adam', learning_rate=gv.learning_rate, loss='categorical_crossentropy')
 
 # Training
 model = tflearn.DNN(net, tensorboard_verbose=gv.tensorboard_verbosity)
-model.load('/home/konrad/dev/myspeech/tflearn.lstm.model')
+model.load(gv.models_path + 'tflearn.' + mode + '.model')
 
 total_accuracy = 0
 for i in range(gv.batch_iterations):
