@@ -16,7 +16,7 @@ else:
 # Setting batches
 validation_batch = batch_generator.mfcc_batch_generator(gv.validation_batch_size, gv.height)
 x, y, z = next(validation_batch)
-testX, testY = x, yitem
+testX, testY = x, y
 
 training_batch = batch_generator.mfcc_batch_generator(gv.training_batch_size, gv.height, exclude=z)
 
