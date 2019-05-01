@@ -16,7 +16,7 @@ else:
 # Setting batches
 validation_batch = batch_generator.mfcc_batch_generator(gv.validation_batch_size, gv.height)
 x, y, z = next(validation_batch)
-testX, testY = x, y
+testX, testY = x, yitem
 
 training_batch = batch_generator.mfcc_batch_generator(gv.training_batch_size, gv.height, exclude=z)
 
@@ -39,7 +39,7 @@ for times in range(gv.training_iters):
     model.fit(trainX, trainY, n_epoch=gv.epochs, validation_set=(testX, testY),
               validation_batch_size=gv.validation_batch_size,
               show_metric=True,
-              batch_size=gv.training_batch_size, run_id=mode)
+              batch_size=gv.training_batch_size, run_id=mode + '_training')
     if times % 10 == 0:
         model.save(gv.models_path + 'tflearn.' + mode + '.model.checkpoint')
 

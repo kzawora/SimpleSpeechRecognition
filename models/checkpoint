@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/konrad/dev/repo/models/tflearn.rnn.model"
+all_model_checkpoint_paths: "/home/konrad/dev/repo/models/tflearn.rnn.model"
