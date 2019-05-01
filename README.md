@@ -33,8 +33,11 @@ TensorBoard logs from training included models are also included in this repo, j
 
 Dependencies
 ============
-* tflearn 
-* tensorflow
-* numpy
-* librosa
-* future
+Dependencies are included in `requirements.txt` (with tensorflow-gpu by default)
+Project was developed and runs successfully on tensorflow-gpu 1.13.0 with CUDA 10.0 and Python 3.7.3 on Manjaro Budgie 18.0.4 and following dependencies versions:
+* numpy>=1.16.3
+* librosa>=0.6.3
+* tensorflow-gpu>=1.13.0
+* tensorboard>=1.13.1
+* tflearn>=0.3.2
+Older configurations are untested.

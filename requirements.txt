@@ -1,0 +1,5 @@
+numpy>=1.16.3
+librosa>=0.6.3
+tensorflow-gpu>=1.13.0
+tensorboard>=1.13.1
+tflearn>=0.3.2
