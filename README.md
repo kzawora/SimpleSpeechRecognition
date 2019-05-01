@@ -20,6 +20,7 @@ validation_batch_size = 1024
 epochs = 20
 ```
 Therefore the training took 4000 steps (`training_iters * epochs`), resulting in following accuracy:
+
 |    type   | Vanilla RNN |  LSTM  |   GRU  |
 |:---------:|:-----------:|:------:|:------:|
 | accuracy* |    35.88%   | 91.97% | 95.31% |
